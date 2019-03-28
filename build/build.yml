@@ -14,8 +14,13 @@ phases:
     buildConfiguration: 'Release'
 
   steps:
-
   - task: NuGetToolInstaller@0
+
+  - task: NuGetCommand@2
+    displayName: 'Update HL7.Fhir.Stu3'
+    inputs:
+      command: custom
+      arguments: 'update ./src/Microsoft.Health.Fhir.Api/Microsoft.Health.Fhir.Api.csproj -Id HL7.Fhir.Stu3 -PreRelease'
 
   - task: DotNetCoreInstaller@0
     inputs:
